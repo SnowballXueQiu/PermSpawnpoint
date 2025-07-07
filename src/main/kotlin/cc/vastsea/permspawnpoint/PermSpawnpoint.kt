@@ -3,6 +3,7 @@ package cc.vastsea.permspawnpoint
 import cc.vastsea.permspawnpoint.commands.PermSpawnCommand
 import cc.vastsea.permspawnpoint.config.ConfigManager
 import cc.vastsea.permspawnpoint.listeners.PlayerJoinListener
+import cc.vastsea.permspawnpoint.listeners.PlayerSpawnLocationListener
 import cc.vastsea.permspawnpoint.listeners.PlayerDeathListener
 import cc.vastsea.permspawnpoint.managers.LanguageManager
 import cc.vastsea.permspawnpoint.managers.SpawnManager
@@ -51,6 +52,7 @@ class PermSpawnpoint : JavaPlugin() {
         
         // Register events
         server.pluginManager.registerEvents(PlayerJoinListener(this), this)
+        server.pluginManager.registerEvents(PlayerSpawnLocationListener(this), this)
         server.pluginManager.registerEvents(PlayerDeathListener(this), this)
         
         // Register commands

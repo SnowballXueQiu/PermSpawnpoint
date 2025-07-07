@@ -59,64 +59,25 @@ class PlayerJoinListener(private val plugin: PermSpawnpoint) : Listener {
         }.runTaskLater(plugin, delay)
     }
     
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.MONITOR)
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
         
-        // Check if this is the player's first join
-        if (!plugin.spawnManager.isFirstJoin(player)) {
-            if (plugin.configManager.isDebugEnabled()) {
+        // This listener now only handles logging and cleanup
+        // The actual spawn location is handled by PlayerSpawnLocationListener
+        
+        if (plugin.configManager.isDebugEnabled()) {
+            if (plugin.spawnManager.isFirstJoin(player)) {
+                plugin.logger.info(plugin.languageManager.getMessage(
+                    "join.first-time", 
+                    player.name
+                ))
+            } else {
                 plugin.logger.info(plugin.languageManager.getMessage(
                     "join.not-first-time", 
                     player.name
                 ))
             }
-            return
         }
-        
-        if (plugin.configManager.isDebugEnabled()) {
-            plugin.logger.info(plugin.languageManager.getMessage(
-                "join.first-time", 
-                player.name
-            ))
-        }
-        
-        // Delay the teleportation to ensure the player is fully loaded
-        object : BukkitRunnable() {
-            override fun run() {
-                if (player.isOnline) {
-                    val success = plugin.spawnManager.teleportToSpawn(player)
-                    
-                    if (plugin.configManager.isDebugEnabled()) {
-                        val message = if (success) {
-                            plugin.languageManager.getMessage("join.teleported", player.name)
-                        } else {
-                            plugin.languageManager.getMessage("join.teleport-failed", player.name)
-                        }
-                        plugin.logger.info(message)
-                    }
-                    
-                    if (success) {
-                                // Set player's respawn location after teleportation with additional delay
-                                setRespawnLocationWithRetry(player, 0, 40L)
-                        
-                        // Send welcome message to player
-                        val welcomeMessage = plugin.languageManager.getMessage("join.welcome")
-                        if (welcomeMessage.isNotBlank()) {
-                            player.sendMessage(welcomeMessage)
-                        }
-                    } else {
-                        // Log warning if teleportation failed
-                        plugin.logger.warning(plugin.languageManager.getMessage(
-                            "join.spawn-failed", 
-                            player.name
-                        ))
-                        
-                        // Still mark as joined to prevent repeated attempts
-                        plugin.spawnManager.markAsJoined(player)
-                    }
-                }
-            }
-        }.runTaskLater(plugin, 20L) // Wait 1 second (20 ticks)
     }
 }

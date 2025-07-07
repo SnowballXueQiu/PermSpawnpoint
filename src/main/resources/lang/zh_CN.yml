@@ -27,6 +27,8 @@ join:
   welcome: "欢迎来到服务器！您已被传送到指定的出生点。"
   spawn-failed: "传送玩家 %s 到出生点失败。"
   respawn-set: "已为玩家 %s 设置重生点位置：%s (%d, %d, %d)"
+  spawn-location-set: "已为玩家 %s 设置出生位置：%s (%d, %d, %d)"
+  no-spawn-location: "未找到玩家 %s 的出生位置"
 
 # 死亡消息
 death:
