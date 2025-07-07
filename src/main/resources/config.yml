@@ -1,0 +1,59 @@
+# PermSpawnpoint Configuration
+# Author: Snowball_233
+# Version: 1.0.0
+
+# Language setting (en_US, zh_CN)
+language: en_US
+
+# Enable debug logging
+debug: false
+
+# Spawn points configuration
+# Each spawn point can have multiple permissions/groups
+# Priority: Higher numbers = higher priority
+spawn-points:
+  # Example spawn point for VIP players
+  vip-spawn:
+    world: "world"
+    x: 100.5
+    y: 64.0
+    z: 200.5
+    yaw: 90.0
+    pitch: 0.0
+    permissions:
+      - "group:vip"  # Vault group permission
+      - "permspawnpoint.vip"  # Direct permission
+    priority: 10
+  
+  # Example spawn point for default players
+  default-spawn:
+    world: "world"
+    x: 0.5
+    y: 64.0
+    z: 0.5
+    yaw: 0.0
+    pitch: 0.0
+    permissions: []  # No permissions required (everyone can use)
+    priority: 1
+  
+  # Example spawn point for admin players
+  admin-spawn:
+    world: "world_nether"
+    x: 50.5
+    y: 64.0
+    z: 50.5
+    yaw: 180.0
+    pitch: 0.0
+    permissions:
+      - "group:admin"
+      - "permspawnpoint.admin"
+    priority: 20
+
+# Configuration notes:
+# - Players will be teleported to the highest priority spawn point they have access to
+# - If a player has no access to any spawn point, they will spawn at the default world spawn
+# - Use "group:groupname" for Vault group permissions
+# - Use regular permission nodes for direct permissions
+# - Coordinates support decimal values for precise positioning
+# - Yaw: 0=South, 90=West, 180=North, 270=East
+# - Pitch: -90=Up, 0=Straight, 90=Down

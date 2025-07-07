@@ -1,0 +1,80 @@
+# English Language File for PermSpawnpoint
+# Author: Snowball_233
+
+# Plugin messages
+plugin:
+  enabled: "PermSpawnpoint has been enabled!"
+  disabled: "PermSpawnpoint has been disabled!"
+  reloaded: "PermSpawnpoint has been reloaded!"
+  vault-not-found: "Vault not found! This plugin requires Vault to work properly."
+
+# Configuration messages
+config:
+  no-spawn-points: "No spawn points configured in config.yml!"
+
+# Spawn messages
+spawn:
+  no-spawn-points: "No spawn points are configured!"
+  no-valid-spawn: "Player %s has no valid spawn points available."
+  world-not-found: "World '%s' not found!"
+  teleported: "Player %s teleported to spawn in %s at %d, %d, %d"
+  teleport-failed: "Failed to teleport player %s: %s"
+
+# Join messages
+join:
+  first-time: "Player %s is joining for the first time."
+  not-first-time: "Player %s has joined before, skipping spawn teleport."
+  welcome: "Welcome to the server! You have been teleported to your designated spawn point."
+  spawn-failed: "Failed to teleport %s to spawn point."
+
+# Command messages
+command:
+  no-permission: "&cYou don't have permission to use this command!"
+  player-only: "&cThis command can only be used by players!"
+  
+  # Help messages
+  help:
+    header: "&6=== PermSpawnpoint Commands ==="
+    reload: "&e/permspawn reload &7- Reload the plugin configuration"
+    setspawn: "&e/permspawn setspawn <name> <permissions> <priority> &7- Set a spawn point"
+    list: "&e/permspawn list &7- List all spawn points"
+    reset: "&e/permspawn reset <player> &7- Reset player's first join status"
+    info: "&e/permspawn info <player> &7- Show player spawn information"
+  
+  # Reload command
+  reload:
+    success: "&aConfiguration reloaded successfully!"
+    failed: "&cFailed to reload configuration: %s"
+  
+  # Setspawn command
+  setspawn:
+    usage: "&cUsage: /permspawn setspawn <name> <permissions|none> <priority>"
+    invalid-priority: "&cPriority must be a valid number!"
+    success: "&aSpawn point '%s' created at %s (%d, %d, %d) with priority %d"
+  
+  # List command
+  list:
+    header: "&6=== Spawn Points ==="
+    empty: "&cNo spawn points configured!"
+    entry: "&e%s &7- %s (%d, %d, %d) Priority: %d Permissions: %s"
+    no-permissions: "None"
+  
+  # Reset command
+  reset:
+    usage: "&cUsage: /permspawn reset <player>"
+    player-not-found: "&cPlayer '%s' not found!"
+    success: "&aReset first join status for player %s"
+  
+  # Info command
+  info:
+    usage: "&cUsage: /permspawn info <player>"
+    player-not-found: "&cPlayer '%s' not found!"
+    header: "&6=== Player Info: %s ==="
+    first-join: "&7First Join: %s"
+    spawn-location: "&7Spawn Location: %s (%d, %d, %d)"
+    no-spawn: "&7No valid spawn location available"
+
+# Common messages
+common:
+  yes: "&aYes"
+  no: "&cNo"

@@ -1,0 +1,80 @@
+# 中文语言文件 - PermSpawnpoint
+# 作者: Snowball_233
+
+# 插件消息
+plugin:
+  enabled: "PermSpawnpoint 插件已启用！"
+  disabled: "PermSpawnpoint 插件已禁用！"
+  reloaded: "PermSpawnpoint 插件已重载！"
+  vault-not-found: "未找到 Vault 插件！此插件需要 Vault 才能正常工作。"
+
+# 配置消息
+config:
+  no-spawn-points: "配置文件中未配置任何出生点！"
+
+# 出生点消息
+spawn:
+  no-spawn-points: "未配置任何出生点！"
+  no-valid-spawn: "玩家 %s 没有可用的出生点。"
+  world-not-found: "未找到世界 '%s'！"
+  teleported: "玩家 %s 已传送到 %s 世界的出生点 (%d, %d, %d)"
+  teleport-failed: "传送玩家 %s 失败：%s"
+
+# 加入消息
+join:
+  first-time: "玩家 %s 首次加入服务器。"
+  not-first-time: "玩家 %s 之前已加入过，跳过出生点传送。"
+  welcome: "欢迎来到服务器！您已被传送到指定的出生点。"
+  spawn-failed: "传送 %s 到出生点失败。"
+
+# 命令消息
+command:
+  no-permission: "&c您没有权限使用此命令！"
+  player-only: "&c此命令只能由玩家使用！"
+  
+  # 帮助消息
+  help:
+    header: "&6=== PermSpawnpoint 命令 ==="
+    reload: "&e/permspawn reload &7- 重载插件配置"
+    setspawn: "&e/permspawn setspawn <名称> <权限> <优先级> &7- 设置出生点"
+    list: "&e/permspawn list &7- 列出所有出生点"
+    reset: "&e/permspawn reset <玩家> &7- 重置玩家首次加入状态"
+    info: "&e/permspawn info <玩家> &7- 显示玩家出生点信息"
+  
+  # 重载命令
+  reload:
+    success: "&a配置重载成功！"
+    failed: "&c配置重载失败：%s"
+  
+  # 设置出生点命令
+  setspawn:
+    usage: "&c用法：/permspawn setspawn <名称> <权限|none> <优先级>"
+    invalid-priority: "&c优先级必须是有效的数字！"
+    success: "&a出生点 '%s' 已在 %s (%d, %d, %d) 创建，优先级为 %d"
+  
+  # 列表命令
+  list:
+    header: "&6=== 出生点列表 ==="
+    empty: "&c未配置任何出生点！"
+    entry: "&e%s &7- %s (%d, %d, %d) 优先级：%d 权限：%s"
+    no-permissions: "无"
+  
+  # 重置命令
+  reset:
+    usage: "&c用法：/permspawn reset <玩家>"
+    player-not-found: "&c未找到玩家 '%s'！"
+    success: "&a已重置玩家 %s 的首次加入状态"
+  
+  # 信息命令
+  info:
+    usage: "&c用法：/permspawn info <玩家>"
+    player-not-found: "&c未找到玩家 '%s'！"
+    header: "&6=== 玩家信息：%s ==="
+    first-join: "&7首次加入：%s"
+    spawn-location: "&7出生位置：%s (%d, %d, %d)"
+    no-spawn: "&7无可用的出生位置"
+
+# 通用消息
+common:
+  yes: "&a是"
+  no: "&c否"
