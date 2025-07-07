@@ -27,6 +27,7 @@ class PermSpawnCommand(private val plugin: PermSpawnpoint) : CommandExecutor, Ta
             "list" -> handleList(sender)
             "reset" -> handleReset(sender, args)
             "info" -> handleInfo(sender, args)
+            "setrespawn" -> handleSetRespawn(sender, args)
             else -> sendHelp(sender)
         }
         
@@ -40,7 +41,8 @@ class PermSpawnCommand(private val plugin: PermSpawnpoint) : CommandExecutor, Ta
             "command.help.setspawn",
             "command.help.list",
             "command.help.reset",
-            "command.help.info"
+            "command.help.info",
+            "command.help.setrespawn"
         )
         
         messages.forEach { key ->
@@ -196,17 +198,50 @@ class PermSpawnCommand(private val plugin: PermSpawnpoint) : CommandExecutor, Ta
         }
     }
     
+    private fun handleSetRespawn(sender: CommandSender, args: Array<out String>) {
+        if (args.size < 2) {
+            sender.sendMessage(plugin.languageManager.getMessage("command.setrespawn.usage"))
+            return
+        }
+        
+        val playerName = args[1]
+        val targetPlayer = plugin.server.getPlayer(playerName)
+        
+        if (targetPlayer == null) {
+            sender.sendMessage(plugin.languageManager.getMessage("command.setrespawn.player-not-found", playerName))
+            return
+        }
+        
+        val spawnLocation = plugin.spawnManager.getSpawnLocation(targetPlayer)
+        if (spawnLocation == null) {
+            sender.sendMessage(plugin.languageManager.getMessage("command.setrespawn.no-spawn", targetPlayer.name))
+            return
+        }
+        
+        // Set player's respawn location (bed spawn location works on all Bukkit versions)
+        targetPlayer.setBedSpawnLocation(spawnLocation, true)
+        
+        sender.sendMessage(plugin.languageManager.getMessage(
+            "command.setrespawn.success",
+            targetPlayer.name,
+            spawnLocation.world?.name ?: "unknown",
+            spawnLocation.x.toInt(),
+            spawnLocation.y.toInt(),
+            spawnLocation.z.toInt()
+        ))
+    }
+    
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): List<String> {
         if (!sender.hasPermission("permspawnpoint.admin")) {
             return emptyList()
         }
         
         return when (args.size) {
-            1 -> listOf("reload", "setspawn", "list", "reset", "info").filter { 
+            1 -> listOf("reload", "setspawn", "list", "reset", "info", "setrespawn").filter { 
                 it.startsWith(args[0], ignoreCase = true) 
             }
             2 -> when (args[0].lowercase()) {
-                "reset", "info" -> plugin.server.onlinePlayers.map { it.name }.filter {
+                "reset", "info", "setrespawn" -> plugin.server.onlinePlayers.map { it.name }.filter {
                     it.startsWith(args[1], ignoreCase = true)
                 }
                 else -> emptyList()

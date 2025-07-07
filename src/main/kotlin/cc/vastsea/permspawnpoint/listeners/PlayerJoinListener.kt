@@ -38,6 +38,24 @@ class PlayerJoinListener(private val plugin: PermSpawnpoint) : Listener {
                     val success = plugin.spawnManager.teleportToSpawn(player)
                     
                     if (success) {
+                        // Set player's respawn location to prevent returning to world spawn on death
+                        val spawnLocation = plugin.spawnManager.getSpawnLocation(player)
+                        if (spawnLocation != null) {
+                            // Set bed spawn location (works on all Bukkit versions)
+                            player.setBedSpawnLocation(spawnLocation, true)
+                            
+                            if (plugin.configManager.isDebugEnabled()) {
+                                plugin.logger.info(plugin.languageManager.getMessage(
+                                    "join.respawn-set",
+                                    player.name,
+                                    spawnLocation.world?.name ?: "unknown",
+                                    spawnLocation.x.toInt(),
+                                    spawnLocation.y.toInt(),
+                                    spawnLocation.z.toInt()
+                                ))
+                            }
+                        }
+                        
                         // Send welcome message to player
                         val welcomeMessage = plugin.languageManager.getMessage("join.welcome")
                         if (welcomeMessage.isNotBlank()) {

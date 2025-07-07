@@ -26,6 +26,7 @@ join:
   not-first-time: "Player %s has joined before, skipping spawn teleport."
   welcome: "Welcome to the server! You have been teleported to your designated spawn point."
   spawn-failed: "Failed to teleport %s to spawn point."
+  respawn-set: "Set respawn location for %s at %s (%d, %d, %d)"
 
 # Command messages
 command:
@@ -34,12 +35,13 @@ command:
   
   # Help messages
   help:
-    header: "&6=== PermSpawnpoint Commands ==="
-    reload: "&e/permspawn reload &7- Reload the plugin configuration"
-    setspawn: "&e/permspawn setspawn <name> <permissions> <priority> &7- Set a spawn point"
-    list: "&e/permspawn list &7- List all spawn points"
-    reset: "&e/permspawn reset <player> &7- Reset player's first join status"
-    info: "&e/permspawn info <player> &7- Show player spawn information"
+    header: "§6=== PermSpawnpoint Commands ==="
+    reload: "§e/permspawn reload §7- Reload plugin configuration"
+    setspawn: "§e/permspawn setspawn <name> <permissions> <priority> §7- Set spawn point at current location"
+    list: "§e/permspawn list §7- List all spawn points"
+    reset: "§e/permspawn reset <player> §7- Reset player's first join status"
+    info: "§e/permspawn info <player> §7- Show player information"
+    setrespawn: "§e/permspawn setrespawn <player> §7- Manually set player's respawn point"
   
   # Reload command
   reload:
@@ -73,6 +75,13 @@ command:
     first-join: "&7First Join: %s"
     spawn-location: "&7Spawn Location: %s (%d, %d, %d)"
     no-spawn: "&7No valid spawn location available"
+  
+  # SetRespawn command
+  setrespawn:
+    usage: "&cUsage: /permspawn setrespawn <player>"
+    player-not-found: "&cPlayer '%s' not found!"
+    no-spawn: "&cPlayer %s has no assigned spawn location."
+    success: "&aSuccessfully set respawn point for %s at %s (%d, %d, %d)"
 
 # Common messages
 common:

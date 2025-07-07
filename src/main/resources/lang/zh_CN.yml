@@ -25,7 +25,8 @@ join:
   first-time: "玩家 %s 首次加入服务器。"
   not-first-time: "玩家 %s 之前已加入过，跳过出生点传送。"
   welcome: "欢迎来到服务器！您已被传送到指定的出生点。"
-  spawn-failed: "传送 %s 到出生点失败。"
+  spawn-failed: "传送玩家 %s 到出生点失败。"
+  respawn-set: "已为玩家 %s 设置重生点位置：%s (%d, %d, %d)"
 
 # 命令消息
 command:
@@ -40,6 +41,7 @@ command:
     list: "&e/permspawn list &7- 列出所有出生点"
     reset: "&e/permspawn reset <玩家> &7- 重置玩家首次加入状态"
     info: "&e/permspawn info <玩家> &7- 显示玩家出生点信息"
+    setrespawn: "&e/permspawn setrespawn <玩家> &7- 手动设置玩家重生点"
   
   # 重载命令
   reload:
@@ -73,6 +75,13 @@ command:
     first-join: "&7首次加入：%s"
     spawn-location: "&7出生位置：%s (%d, %d, %d)"
     no-spawn: "&7无可用的出生位置"
+  
+  # 设置重生点命令
+  setrespawn:
+    usage: "&c用法：/permspawn setrespawn <玩家>"
+    player-not-found: "&c未找到玩家 '%s'！"
+    no-spawn: "&c玩家 %s 没有分配的出生点位置。"
+    success: "&a成功为玩家 %s 设置重生点：%s (%d, %d, %d)"
 
 # 通用消息
 common:
