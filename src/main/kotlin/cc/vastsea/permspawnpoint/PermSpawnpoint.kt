@@ -3,6 +3,7 @@ package cc.vastsea.permspawnpoint
 import cc.vastsea.permspawnpoint.commands.PermSpawnCommand
 import cc.vastsea.permspawnpoint.config.ConfigManager
 import cc.vastsea.permspawnpoint.listeners.PlayerJoinListener
+import cc.vastsea.permspawnpoint.listeners.PlayerDeathListener
 import cc.vastsea.permspawnpoint.managers.LanguageManager
 import cc.vastsea.permspawnpoint.managers.SpawnManager
 import net.milkbowl.vault.permission.Permission
@@ -50,6 +51,7 @@ class PermSpawnpoint : JavaPlugin() {
         
         // Register events
         server.pluginManager.registerEvents(PlayerJoinListener(this), this)
+        server.pluginManager.registerEvents(PlayerDeathListener(this), this)
         
         // Register commands
         getCommand("permspawn")?.setExecutor(PermSpawnCommand(this))

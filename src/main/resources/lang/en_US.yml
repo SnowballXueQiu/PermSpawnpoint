@@ -28,6 +28,9 @@ join:
   spawn-failed: "Failed to teleport %s to spawn point."
   respawn-set: "Set respawn location for %s at %s (%d, %d, %d)"
 
+death:
+  respawn-reset: "Reset respawn location for %s at %s (%d, %d, %d)"
+
 # Command messages
 command:
   no-permission: "&cYou don't have permission to use this command!"

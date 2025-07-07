@@ -28,6 +28,10 @@ join:
   spawn-failed: "传送玩家 %s 到出生点失败。"
   respawn-set: "已为玩家 %s 设置重生点位置：%s (%d, %d, %d)"
 
+# 死亡消息
+death:
+  respawn-reset: "为玩家 %s 重置重生点在 %s (%d, %d, %d)"
+
 # 命令消息
 command:
   no-permission: "&c您没有权限使用此命令！"

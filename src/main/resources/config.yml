@@ -29,7 +29,7 @@ spawn-points:
   default-spawn:
     world: "world"
     x: 0.5
-    y: 64.0
+    y: 70.0
     z: 0.5
     yaw: 0.0
     pitch: 0.0
@@ -38,9 +38,9 @@ spawn-points:
   
   # Example spawn point for admin players
   admin-spawn:
-    world: "world_nether"
+    world: "world"
     x: 50.5
-    y: 64.0
+    y: 70.0
     z: 50.5
     yaw: 180.0
     pitch: 0.0
